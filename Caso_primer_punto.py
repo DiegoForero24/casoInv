@@ -5,8 +5,10 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 
+
 df = pd.read_excel('C:/Users/User/Desktop/ejemplo_td1/clase_3/customer_data.xlsx')
 #Edad
+print("////////")
 media_edad = df['age'].mean()
 print("Media de la columna 'edad':", media_edad)
 sns.barplot(x=df['age'].value_counts().index, y=df['age'].value_counts(), color='red')
@@ -38,6 +40,11 @@ print("El rango de la columna Ingresos es:", Rango_ingresos)
 desviacion_ingresos = df['income'].std()
 print(" Desviacion estandar es:", desviacion_ingresos)
 
+x = df['income']
+y = df['income']
+ 
+plt.plot(x, y)  # Plot the chart
+plt.show()  
 print("////////")
 #Educacion
 conteo_educacion= df['education'].value_counts()
@@ -110,7 +117,7 @@ print("////////")
 moda_promocion = df['promotion_usage'].mode()[0]
 print("Moda de la columna Uso de la promocion es:", moda_promocion)
 plt.figure(figsize=(8, 6))
-df['promtion_usage'].value_counts().plot.pie(autopct='%1.1f%%', startangle=90)
+df['promotion_usage'].value_counts().plot.pie(autopct='%1.1f%%', startangle=90)
 plt.title('Diagrama de Torta para distribución de Columna promocion', fontsize=16)
 plt.ylabel('')  
 plt.show()
@@ -120,3 +127,5 @@ moda_satisfaccion = df['satisfaction_score'].mode()[0]
 print("Moda de la columna satisfaccion es:", moda_satisfaccion)
 media_satisfaccion = df['satisfaction_score'].mean()
 print("Media de la columna satisfaccion es:", media_satisfaccion)
+sns.displot(df['satisfaction_score'], kde = False, color ='red', bins = 30) 
+plt.show()
