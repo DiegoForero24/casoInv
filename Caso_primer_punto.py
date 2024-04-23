@@ -39,12 +39,12 @@ Rango_ingresos= df['income'].max() - df['income'].min()
 print("El rango de la columna Ingresos es:", Rango_ingresos)
 desviacion_ingresos = df['income'].std()
 print(" Desviacion estandar es:", desviacion_ingresos)
+plt.boxplot(df['income'])
+plt.title('Distribución de Ingresos')
+plt.xlabel('Ingresos')
+plt.ylabel('Frecuencia')
+plt.show()
 
-x = df['income']
-y = df['income']
- 
-plt.plot(x, y)  # Plot the chart
-plt.show()  
 print("////////")
 #Educacion
 conteo_educacion= df['education'].value_counts()
@@ -101,6 +101,11 @@ Rango_monto= df['purchase_amount'].max() - df['purchase_amount'].min()
 print("El rango de la columna monto es:", Rango_monto)
 desviacion_monto = df['purchase_amount'].std()
 print("Desviación estándar:", desviacion_monto)
+sns.displot(df['purchase_amount'], kde = False, color ='red', bins = 30)
+plt.title('Distribución de Monto de la compra')
+plt.xlabel('Compra')
+plt.ylabel('Frecuencia')
+plt.show()
 print("////////")
 #Categoria del producto
 conteo_producto= df['product_category'].value_counts()
@@ -127,5 +132,8 @@ moda_satisfaccion = df['satisfaction_score'].mode()[0]
 print("Moda de la columna satisfaccion es:", moda_satisfaccion)
 media_satisfaccion = df['satisfaction_score'].mean()
 print("Media de la columna satisfaccion es:", media_satisfaccion)
-sns.displot(df['satisfaction_score'], kde = False, color ='red', bins = 30) 
+sns.barplot(x=df['satisfaction_score'].value_counts().index, y=df['satisfaction_score'].value_counts(), color='red')
+plt.title('Distribución de satisfaccion')
+plt.xlabel('Satisfaccion')
+plt.ylabel('Frecuencia')
 plt.show()
